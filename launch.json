@@ -1,0 +1,24 @@
+{
+  "kind": "custom_token",
+  "token": {
+    "contract": "HamsterToken",
+    "name": "HAMSTER",
+    "symbol": "HAMSTER",
+    "decimals": 18,
+    "constructorArgs": [],
+    "totalSupply": "1000000000000000000000000000"
+  },
+  "contracts": [],
+  "pool": {
+    "pairedCurrency": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+    "fee": 12500,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "economics": {
+    "poolBps": 1500,
+    "initialMarketCapWei": "2500000000000000000000",
+    "remainderTo": "0x3ed212257958724579f13b3dba74a07ac6007903"
+  },
+  "notes": "HamsterToken (src/HamsterToken.sol) is HAMSTER, symbol HAMSTER, 18 decimals: a plain fixed-supply ERC-20 built on OpenZeppelin ERC20 and ERC20Permit v5.4.0. Its constructor takes no arguments and mints the whole supply of 1,000,000,000 HAMSTER (1000000000000000000000000000 minor units) once to msg.sender, the launch factory. There is no mint function, minter role, owner, pause, block-list, tax, burn-on-transfer, reflection or transfer limit, so every launch flow (factory to distributor, distributor to claimants, factory to pool, pool to and from traders) moves exactly the amount asked for and no exemption list is needed; the constructor therefore takes neither $factory, $poolManager nor $launchNumber. The only addition to ERC-20 is EIP-2612 permit (signature approvals with nonce, deadline and chain id in the domain). All library code is internal; the runtime bytecode has no DELEGATECALL, CALLCODE, SELFDESTRUCT, proxy or upgrade path. There are no application contracts: the accepted tree holds only the token (script/DeployHamsterToken.s.sol is a local reference script, not deployed by the launch). Pool: paired with IMD at 0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7 on Ethereum (chain id 1), fee 12500 (1.25%), tick spacing 60; initialPrice is provenance only and the deployer derives the opening price from economics.initialMarketCapWei (2,500 IMD market cap for the whole supply) and totalSupply. Economics are the requester's verbatim: 1500 bps of the supply seeds the single-sided pool and the remainder of the requester's share goes to 0x3ed212257958724579f13b3dba74a07ac6007903."
+}
